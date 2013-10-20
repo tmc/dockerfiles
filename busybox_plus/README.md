@@ -16,17 +16,17 @@ don't want to wait to rebuild it.
 
 If you want to build it yourself invoke make in this directory. (This takes a
 while).
-``sh
+```sh
 $ make
-``
+```
 
-Or, you can pull the prebuilt machine.
-``sh
+Or, you can pull the prebuilt machine:
+```sh
 $ docker pull base/mkbusybox-plus
 $ docker tag base/mkbusybox-plus mkbusybox-plus
-``
+```
 
 We can now start selectively adding packages until we get what we want.
-``sh
+```sh
 $ docker run -privileged mkbusybox-plus git openssl pcre zlib
-``
+```
