@@ -3,7 +3,7 @@ set -x
 mkdir /build
 echo "PACKAGES=$@"
 mount
-docker -d -D &
+dind docker -d -D &
 sleep 3
-dind wrapdocker docker build .
+docker build .
 # pacman -b /build -r /build -Syddu --noconfirm $@

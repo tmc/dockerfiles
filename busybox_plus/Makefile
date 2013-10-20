@@ -9,5 +9,5 @@ bin/docker:
 	cp `which docker` bin/docker
 
 bin/dind:
-	curl -o bin/dind https://raw.github.com/dotcloud/docker/master/hack/dind
+	curl -o bin/dind https://raw.github.com/tianon/docker/255b6aadfacfd346ef413a1ffd945360276cbcf6/hack/dind
 	chmod +x bin/dind
