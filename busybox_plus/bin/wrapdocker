@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# An extra layer to ensure /sys/fs/cgroup/cpu,cpuacct exists
+
+if [ ! -d "/sys/fs/cgroup/cpu,cpuacct" ]; then
+	ln -s /sys/fs/cgroup/cpuacct,cpu /sys/fs/cgroup/cpu,cpuacct
+fi
+
+exec $*

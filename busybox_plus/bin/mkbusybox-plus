@@ -1,0 +1,9 @@
+#!/bin/sh
+set -x
+mkdir /build
+echo "PACKAGES=$@"
+mount
+docker -d -D &
+sleep 3
+dind wrapdocker docker build .
+# pacman -b /build -r /build -Syddu --noconfirm $@
