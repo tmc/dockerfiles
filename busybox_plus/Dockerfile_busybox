@@ -2,4 +2,5 @@ FROM busybox
 
 RUN env
 RUN ls -al
-# ADD usr/ /usr/
+RUN pwd
+ADD usr/ /usr/

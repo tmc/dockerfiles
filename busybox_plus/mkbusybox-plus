@@ -1,0 +1,11 @@
+#!/bin/sh
+wrapdocker
+mkdir /build
+echo "PACKAGES=$@"
+#mount
+#mount --make-rprivate /
+docker -d &
+set -x
+pacman -b /build -r /build -Syddu --noconfirm $@
+docker build -t bb .
+docker save bb | gzip -c > /output/bb.tar.gz
