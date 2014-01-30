@@ -1,11 +1,11 @@
 #!/bin/sh
 wrapdocker
-mkdir /build
-echo "PACKAGES=$@"
-#mount
-#mount --make-rprivate /
 docker -d &
-set -x
-pacman -b /build -r /build -Syddu --noconfirm $@
+mkdir /tmp/build
+echo "PACKAGES=$@"
+pacman -b /tmp/build -r /tmp/build -Syddu --noconfirm $@
+cd /tmp/build
+tar -cf /build/rootfs.tar .
+cd /build
 docker build -t bb .
-docker save bb | gzip -c > /output/bb.tar.gz
+docker save bb > /output/bb.tar

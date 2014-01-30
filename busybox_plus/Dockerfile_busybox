@@ -1,6 +1,3 @@
 FROM busybox
 
-RUN env
-RUN ls -al
-RUN pwd
-ADD usr/ /usr/
+ADD rootfs.tar /
