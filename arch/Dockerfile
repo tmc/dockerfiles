@@ -1,4 +1,4 @@
-# base/arch
-FROM archlinux
-
-MAINTAINER Travis Cline "travis.cline@gmail.com"
+#base/archlinux
+FROM scratch
+MAINTAINER Travis Cline <travis.cline@gmail.com>
+ADD archlinux-2014.04.01.tar.xz /
