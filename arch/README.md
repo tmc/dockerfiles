@@ -1,4 +1,4 @@
-base/archlinu
+base/archlinux
 
 Archlinux 2014.04.01 Minimal arch installation
 
