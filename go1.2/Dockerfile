@@ -1,8 +1,9 @@
 # go1.2
-FROM base/arch
+FROM base/archlinux
 
 MAINTAINER Travis Cline "travis.cline@gmail.com"
-RUN pacman -Sy --noconfirm git mercurial bzr; rm /var/cache/pacman/pkg/*
-RUN curl -s http://go.googlecode.com/files/go1.2rc2.linux-amd64.tar.gz | tar xzvf -; mv go /usr/local/go
+RUN pacman -Sy --noconfirm go; yes | pacman -Scc
+RUN pacman -Sy --noconfirm git mercurial bzr; yes | pacman -Scc
+
 ENV GOPATH /go
 ENV PATH /go/bin:/usr/local/go/bin:$PATH
