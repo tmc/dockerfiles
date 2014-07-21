@@ -1,6 +1,6 @@
 base/archlinux
 
-Archlinux 2014.04.01 Minimal arch installation
+Archlinux 2014.07.03 Minimal arch installation
 
 Generated with [mkimage-arch.sh][1]
 
