@@ -46,8 +46,8 @@ http {
       listen 443;
     
       ssl on;
-      ssl_certificate /etc/secrets/proxycert;
-      ssl_certificate_key /etc/secrets/proxykey;
+      ssl_certificate /etc/secrets/cert.pem;
+      ssl_certificate_key /etc/secrets/key.pem;
       ssl_dhparam /etc/secrets/dhparam;
     
       ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
@@ -62,7 +62,9 @@ http {
       ssl_stapling_verify on;
      
       add_header Strict-Transport-Security max-age=15638400;
-      add_header X-Frame-Options DENY;
+      {{if .X_FRAME_OPTIONS}}
+      add_header X-Frame-Options {{.X_FRAME_OPTIONS}};
+      {{end}}
       add_header X-Content-Type-Options nosniff;
      
       location / {
@@ -71,6 +73,9 @@ http {
           proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
           proxy_set_header        X-Forwarded-Proto $scheme;
           proxy_set_header        X-Forwarded-Host $http_host;
+          {{if eq (default "" .SKIP_AUTHENTICATION_HEADER) "1" }}
+          proxy_set_header   Authorization "";
+          {{end}}
           proxy_pass              http://target_service;
           proxy_read_timeout      90;
           proxy_redirect          http:// https://;
