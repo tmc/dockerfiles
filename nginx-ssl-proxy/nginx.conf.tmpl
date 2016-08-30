@@ -38,6 +38,14 @@ http {
     server {
       server_name _;
       listen 80;
+      {{if .PASSTHROUGH_LOCATION}}
+      location {{.PASSTHROUGH_LOCATION}} {
+          {{if eq (default "" .SKIP_AUTHENTICATION_HEADER) "1" }}
+          proxy_set_header   Authorization "";
+          {{end}}
+          proxy_pass              http://target_service;
+      }
+      {{end}}
       return 301 https://$host$request_uri;
     }
     
