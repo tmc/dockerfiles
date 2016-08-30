@@ -32,7 +32,7 @@ http {
     include /etc/nginx/extra-conf.d/*;
 
     upstream target_service {
-      server {{.TARGET_SERVICE}};
+      server {{ default "MISSING_TARGET_SERVICE" .TARGET_SERVICE}};
     }
     
     server {
