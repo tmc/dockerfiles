@@ -4,7 +4,7 @@ RUN apk add --no-cache curl
 
 ENV TMPL_VERSION v1.1
 ENV TMPL_CHECKSUM 7e24b4226888f21a3494919eebb446141ca99eaa
-RUN curl -LOk "https://github.com/tmc/tmpl/releases/download/${TMPL_VERSION}/tmpl-${TMPL_VERSION}-linux-amd64.tar.gz" && \
+RUN curl -LO "https://github.com/tmc/tmpl/releases/download/${TMPL_VERSION}/tmpl-${TMPL_VERSION}-linux-amd64.tar.gz" && \
     echo "${TMPL_CHECKSUM}  tmpl-${TMPL_VERSION}-linux-amd64.tar.gz" | sha1sum -c - && \
     tar xzvf "tmpl-${TMPL_VERSION}-linux-amd64.tar.gz" && \
     rm tmpl-${TMPL_VERSION}-linux-amd64.tar.gz
